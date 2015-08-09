@@ -1,0 +1,12 @@
+- name: copy spellbook.sql to tmp
+  copy: src=spellbook.sql dest=/tmp
+
+- name: create Spellbook database
+  mysql_db: name=Spellbook state=present
+  notify: import spellbook tables
+
+- name: create default user (merlin)
+  mysql_user: name=merlin host={{ item }} password=magic append_privs=true priv=Spellbook.*:ALL state=present
+  with_items:
+    - localhost
+    - "%"

@@ -1,0 +1,11 @@
+keycloak_group: "jboss"
+keycloak_owner: "keycloak"
+
+keycloak_version: "1.4.0.Final"
+keycloak_name: "keycloak-{{ keycloak_version }}"
+keycloak_archive: "{{ keycloak_name }}.zip"
+keycloak_url: "http://downloads.jboss.org/keycloak/{{ keycloak_version }}/{{ keycloak_archive }}"
+keycloak_base_dir: "{{ app_base_dir }}"
+keycloak_install_dir: "{{ keycloak_base_dir }}/{{ keycloak_name }}"
+
+keycloak_port_offset: 0

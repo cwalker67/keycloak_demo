@@ -1,0 +1,144 @@
+{
+    "realm": "hogwarts",
+    "enabled": true,
+    "accessTokenLifespan": 60,
+    "accessCodeLifespan": 60,
+    "accessCodeLifespanUserAction": 300,
+    "ssoSessionIdleTimeout": 600,
+    "ssoSessionMaxLifespan": 36000,
+    "sslRequired": "none",
+    "registrationAllowed": false,
+    "privateKey": "MIICXAIBAAKBgQCrVrCuTtArbgaZzL1hvh0xtL5mc7o0NqPVnYXkLvgcwiC3BjLGw1tGEGoJaXDuSaRllobm53JBhjx33UNv+5z/UMG4kytBWxheNVKnL6GgqlNabMaFfPLPCF8kAgKnsi79NMo+n6KnSY8YeUmec/p2vjO2NjsSAVcWEQMVhJ31LwIDAQABAoGAfmO8gVhyBxdqlxmIuglbz8bcjQbhXJLR2EoS8ngTXmN1bo2L90M0mUKSdc7qF10LgETBzqL8jYlQIbt+e6TH8fcEpKCjUlyq0Mf/vVbfZSNaVycY13nTzo27iPyWQHK5NLuJzn1xvxxrUeXI6A2WFpGEBLbHjwpx5WQG9A+2scECQQDvdn9NE75HPTVPxBqsEd2z10TKkl9CZxu10Qby3iQQmWLEJ9LNmy3acvKrE3gMiYNWb6xHPKiIqOR1as7L24aTAkEAtyvQOlCvr5kAjVqrEKXalj0Tzewjweuxc0pskvArTI2Oo070h65GpoIKLc9jf+UA69cRtquwP93aZKtW06U8dQJAF2Y44ks/mK5+eyDqik3koCI08qaC8HYq2wVl7G2QkJ6sbAaILtcvD92ToOvyGyeE0flvmDZxMYlvaZnaQ0lcSQJBAKZU6umJi3/xeEbkJqMfeLclD27XGEFoPeNrmdx0q10Azp4NfJAY+Z8KRyQCR2BEG+oNitBOZ+YXF9KCpH3cdmECQHEigJhYg+ykOvr1aiZUMFT72HU0jnmQe2FVekuG+LJUt2Tm7GtMjTFoGpf0JwrVuZN39fOYAlo+nTixgeW7X8Y=",
+    "publicKey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrVrCuTtArbgaZzL1hvh0xtL5mc7o0NqPVnYXkLvgcwiC3BjLGw1tGEGoJaXDuSaRllobm53JBhjx33UNv+5z/UMG4kytBWxheNVKnL6GgqlNabMaFfPLPCF8kAgKnsi79NMo+n6KnSY8YeUmec/p2vjO2NjsSAVcWEQMVhJ31LwIDAQAB",
+    "requiredCredentials": [ "password" ],
+    "clients": [
+        {
+            "clientId": "spellbook-service",
+            "enabled": true,
+            "bearerOnly" : true,
+            "adminUrl": "/basicauth",
+            "secret": "password"
+        },
+        {
+            "clientId": "hogwarts-web",
+            "enabled": true,
+            "publicClient" : true,
+            "redirectUris" : [ "http://172.16.0.100:9080/hogwarts/*" ],
+            "webOrigins" : [ "http://172.16.0.100:9080" ],
+            "secret": "password"
+        }
+    ],
+    "userFederationProviders" : [ 
+        {
+            "displayName" : "hogwarts-openldap",
+            "providerName" : "ldap",
+            "priority" : 0,
+            "fullSyncPeriod" : 0,
+            "changedSyncPeriod" : 0,
+            "config" : {
+              "bindDn" : "cn=Manager,dc=hogwarts,dc=com",
+              "bindCredential" : "password",
+              "userObjectClasses" : "inetOrgPerson, organizationalPerson",
+              "usersDn" : "ou=People,dc=hogwarts,dc=com",
+              "vendor" : "other",
+              "syncRegistrations" : "true",
+              "userAccountControlsAfterPasswordUpdate" : "true",
+              "allowKerberosAuthentication" : "false",
+              "useKerberosForPasswordAuthentication" : "false",
+              "uuidLDAPAttribute" : "entryUUID",
+              "usernameLDAPAttribute" : "uid",
+              "rdnLDAPAttribute" : "uid",
+              "connectionUrl" : "ldap://localhost:389",
+              "editMode" : "WRITABLE",
+              "authType" : "simple",
+              "searchScope" : "2"
+            }
+        } 
+    ],
+    "userFederationMappers" : [ 
+        {
+            "name" : "role",
+            "federationProviderDisplayName" : "hogwarts-openldap",
+            "federationMapperType" : "role-ldap-mapper",
+            "config" : {
+                "roles.dn" : "ou=Groups,dc=hogwarts,dc=com",
+                "use.realm.roles.mapping" : "true",
+                "membership.ldap.attribute" : "member",
+                "role.object.classes" : "groupOfNames",
+                "role.name.ldap.attribute" : "cn",
+                "mode" : "LDAP_ONLY"
+            }
+        }, {
+            "name" : "creation date",
+            "federationProviderDisplayName" : "hogwarts-openldap",
+            "federationMapperType" : "user-attribute-ldap-mapper",
+            "config" : {
+              "user.model.attribute" : "createTimestamp",
+              "read.only" : "true",
+              "ldap.attribute" : "createTimestamp"
+            }
+        }, {
+            "name" : "organizations",
+            "federationProviderDisplayName" : "hogwarts-openldap",
+            "federationMapperType" : "user-attribute-ldap-mapper",
+            "config" : {
+              "user.model.attribute" : "organizations",
+              "read.only" : "true",
+              "ldap.attribute" : "ou"
+            }
+        }, {
+            "name" : "username",
+            "federationProviderDisplayName" : "hogwarts-openldap",
+            "federationMapperType" : "user-attribute-ldap-mapper",
+            "config" : {
+              "user.model.attribute" : "username",
+              "read.only" : "false",
+              "ldap.attribute" : "uid"
+            }
+        }, {
+            "name" : "first name",
+            "federationProviderDisplayName" : "hogwarts-openldap",
+            "federationMapperType" : "user-attribute-ldap-mapper",
+            "config" : {
+              "user.model.attribute" : "firstName",
+              "read.only" : "false",
+              "ldap.attribute" : "givenName"
+            }
+        }, {
+            "name" : "full name",
+            "federationProviderDisplayName" : "hogwarts-openldap",
+            "federationMapperType" : "full-name-ldap-mapper",
+            "config" : {
+              "ldap.full.name.attribute" : "cn",
+              "read.only" : "false"
+            }
+        }, {
+            "name" : "modify date",
+            "federationProviderDisplayName" : "hogwarts-openldap",
+            "federationMapperType" : "user-attribute-ldap-mapper",
+            "config" : {
+              "user.model.attribute" : "modifyTimestamp",
+              "read.only" : "true",
+              "ldap.attribute" : "modifyTimestamp"
+            }
+        }, {
+            "name" : "email",
+            "federationProviderDisplayName" : "hogwarts-openldap",
+            "federationMapperType" : "user-attribute-ldap-mapper",
+            "config" : {
+              "user.model.attribute" : "email",
+              "read.only" : "false",
+              "ldap.attribute" : "mail"
+            }
+        }, {
+            "name" : "last name",
+            "federationProviderDisplayName" : "hogwarts-openldap",
+            "federationMapperType" : "user-attribute-ldap-mapper",
+            "config" : {
+              "user.model.attribute" : "lastName",
+              "read.only" : "false",
+              "ldap.attribute" : "sn"
+            }
+        } 
+    ]
+}

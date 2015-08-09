@@ -1,0 +1,13 @@
+- name: check if hogwarts.ldif has been imported
+  stat: path="{{ check_dir }}/hogwarts_ldap.done"
+  register: ldap_check
+
+- name: copy ldif file to tmp
+  copy: src=hogwarts.ldif dest=/tmp
+
+- name: import users and groups
+  command: /usr/bin/ldapadd -c -w {{ openldap_server_rootpw }} -x -D {{ openldap_bind_dn }} -f /tmp/hogwarts.ldif
+  when: ldap_check.stat.exists == False
+
+- name: ldap data imported
+  file: path={{ check_dir }}/hogwarts_ldap.done state=touch

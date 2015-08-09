@@ -1,0 +1,354 @@
+
+dn: ou=Groups,dc=hogwarts,dc=com
+objectClass: organizationalunit
+ou: groups
+
+dn: cn=Spell Creators,ou=groups,dc=hogwarts,dc=com
+objectClass: groupOfNames
+objectClass: top
+ou: groups
+description: Can add spells to the spellbook
+member: uid=adumbledore,ou=People,dc=hogwarts,dc=com
+member: uid=triddle,ou=People,dc=hogwarts,dc=com
+member: uid=ssnape,ou=People,dc=hogwarts,dc=com
+cn: Spell Creators
+
+dn: cn=Order Of The Phoenix,ou=groups,dc=hogwarts,dc=com
+objectClass: groupOfNames
+objectClass: top
+ou: groups
+description: Secret society that opposes Death Eaters
+member: uid=hpotter,ou=People,dc=hogwarts,dc=com
+member: uid=hgranger,ou=People,dc=hogwarts,dc=com
+member: uid=rweasley,ou=People,dc=hogwarts,dc=com
+member: uid=sblack,ou=People,dc=hogwarts,dc=com
+member: uid=ntonks,ou=People,dc=hogwarts,dc=com
+member: uid=ssnape,ou=People,dc=hogwarts,dc=com
+cn: Order Of The Phoenix
+
+dn: cn=Death Eaters,ou=Groups,dc=hogwarts,dc=com
+objectClass: groupOfNames
+objectClass: top
+ou: groups
+cn: Death Eaters
+description: Followers of Lord Voldemort
+member: uid=triddle,ou=People,dc=hogwarts,dc=com
+member: uid=ssnape,ou=People,dc=hogwarts,dc=com
+member: uid=dmalfoy,ou=People,dc=hogwarts,dc=com
+member: uid=blestrange,ou=People,dc=hogwarts,dc=com
+
+dn: cn=Dumbledores Army,ou=groups,dc=hogwarts,dc=com
+objectClass: groupOfNames
+objectClass: top
+ou: groups
+description: Secret organization to teach defense against dark arts
+member: uid=hpotter,ou=People,dc=hogwarts,dc=com
+member: uid=hgranger,ou=People,dc=hogwarts,dc=com
+member: uid=rweasley,ou=People,dc=hogwarts,dc=com
+member: uid=nlongbottom,ou=People,dc=hogwarts,dc=com
+member: uid=habbott,ou=People,dc=hogwarts,dc=com
+member: uid=sbones,ou=People,dc=hogwarts,dc=com
+member: uid=emacmillan,ou=People,dc=hogwarts,dc=com
+member: uid=llovegood,ou=People,dc=hogwarts,dc=com
+member: uid=cchang,ou=People,dc=hogwarts,dc=com
+member: uid=ppatil,ou=People,dc=hogwarts,dc=com
+cn: Dumbledores Army
+
+dn: ou=People,dc=hogwarts,dc=com
+objectClass: organizationalunit
+ou: People
+
+dn: uid=adumbledore,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: adumbledore
+userpassword: password
+givenname: Albus
+cn: Albus Dumbledore
+sn: Dumbledore
+mail: adumbledore@example.com
+ou: Gryffindor
+ou: People
+
+dn: uid=hpotter,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: hpotter
+userpassword: password
+givenname: Harry
+cn: Harry Potter
+sn: Potter
+mail: hpotter@example.com
+ou: Gryffindor
+ou: People
+
+dn: uid=hgranger,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: hgranger
+userpassword: password
+givenname: Hermoine
+cn: Hermoine Granger
+sn: Granger
+mail: hgranger@example.com
+ou: Gryffindor
+ou: People
+
+dn: uid=rweasley,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: rweasley
+userpassword: password
+givenname: Ron
+cn: Ron Weasley
+sn: Weasley
+mail: rweasley@example.com
+ou: Gryffindor
+ou: People
+
+dn: uid=sblack,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: sblack
+userpassword: password
+givenname: Sirius
+cn: Sirius Black
+sn: Black
+mail: sblack@example.com
+ou: Gryffindor
+ou: People
+
+dn: uid=nlongbottom,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: nlongbottom
+userpassword: password
+givenname: Neville
+cn: Neville Longbottom
+sn: Longbottom
+mail: nlongbottom@example.com
+ou: Gryffindor
+ou: People
+
+dn: uid=ntonks,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: ntonks
+userpassword: password
+givenname: Nymphadora
+cn: Nymphadora Tonks
+sn: Tonks
+mail: ntonks@example.com
+ou: Hufflepuff
+ou: People
+
+dn: uid=cdiggory,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: cdiggory
+userpassword: password
+givenname: Cedric
+cn: Cedric Diggory
+sn: Diggory
+mail: cdiggory@example.com
+ou: Hufflepuff
+ou: People
+
+dn: uid=habbott,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: habbott
+userpassword: password
+givenname: Hannah
+cn: Hannah Abbott
+sn: Abbott
+mail: habbott@example.com
+ou: Hufflepuff
+ou: People
+
+dn: uid=sbones,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: sbones
+userpassword: password
+givenname: Susan
+cn: Susan Bones
+sn: Bones
+mail: sbones@example.com
+ou: Hufflepuff
+ou: People
+
+dn: uid=emacmillan,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: emacmillan
+userpassword: password
+givenname: Ernie
+cn: Ernie Macmillan
+sn: Macmillan
+mail: emacmillan@example.com
+ou: Hufflepuff
+ou: People
+
+dn: uid=llovegood,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: llovegood
+userpassword: password
+givenname: Luna
+cn: Luna Lovegood
+sn: Lovegood
+mail: llovegood@example.com
+ou: Ravenclaw
+ou: People
+
+dn: uid=cchang,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: cchang
+userpassword: password
+givenname: Cho
+cn: Cho Chang
+sn: Chang
+mail: cchang@example.com
+ou: Ravenclaw
+ou: People
+
+dn: uid=ppatil,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: ppatil
+userpassword: password
+givenname: Padma
+cn: Padma Patil
+sn: Patil
+mail: ppatil@example.com
+ou: Ravenclaw
+ou: People
+
+dn: uid=mwarren,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: mwarren
+userpassword: password
+givenname: Myrtle
+cn: Myrtle Warren
+sn: Warren
+mail: mwarren@example.com
+ou: Ravenclaw
+ou: People
+
+dn: uid=pclearwater,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: pclearwater
+userpassword: password
+givenname: Penny
+cn: Penny Clearwater
+sn: Clearwater
+mail: pclearwater@example.com
+ou: Ravenclaw
+ou: People
+
+dn: uid=triddle,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: triddle
+userpassword: password
+givenname: Tom
+cn: Tom Riddle
+sn: Riddle
+mail: triddle@example.com
+ou: Slytherin
+ou: People
+
+dn: uid=ssnape,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: ssnape
+userpassword: password
+givenname: Severus
+cn: Severus Snape
+sn: Snape
+mail: ssnape@example.com
+ou: Slytherin
+ou: People
+
+dn: uid=dmalfoy,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: dmalfoy
+userpassword: password
+givenname: Draco
+cn: Draco Malfoy
+sn: Malfoy
+mail: dmalfoy@example.com
+ou: Slytherin
+ou: People
+
+dn: uid=blestrange,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: blestrange
+userpassword: password
+givenname: Bellatrix
+cn: Bellatrix Lestrange
+sn: Lestrange
+mail: blestrange@example.com
+ou: Slytherin
+ou: People
+
+dn: uid=pparkinson,ou=People,dc=hogwarts,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: pparkinson
+userpassword: password
+givenname: Pansy
+cn: Pansy Parkinson
+sn: Parkinson
+mail: pparkinson@example.com
+ou: Slytherin
+ou: People
+

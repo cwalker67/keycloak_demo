@@ -1,0 +1,12 @@
+embed-server
+if (outcome == success) of /subsystem=datasources/data-source=SpellBookDS:read-resource
+    /subsystem=datasources/data-source=SpellBookDS:remove
+end-if
+/subsystem=datasources/data-source=SpellBookDS:add( \
+    jndi-name=java:jboss/datasources/SpellBookDS, \
+    driver-class=com.mysql.jdbc.Driver, \
+    driver-name=mysql-connector-java-5.1.36.jar_com.mysql.jdbc.Driver_5_1, \
+    connection-url="jdbc:mysql://localhost:3306/Spellbook", \
+    user-name="merlin", password="magic", \
+    use-java-context=true)
+stop-embedded-server

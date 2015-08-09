@@ -1,0 +1,29 @@
+- name: check if current keycloak version is installed
+  stat: path="{{ check_dir }}/keycloak.done"
+  register: keycloak_check
+
+- name: Add group "{{ keycloak_group }}"
+  group: name={{ keycloak_group }}
+
+- name: Add user "{{ keycloak_owner }}"
+  user: name={{ keycloak_owner }} group={{ keycloak_group }} shell=/bin/false comment="keycloak User" 
+
+- name: check if archive download exists
+  stat: path="/tmp/{{ keycloak_archive }}"
+  register: keycloak_archive_check
+
+- name: download keycloak
+  get_url: url="{{ keycloak_url }}" dest=/tmp
+  when: keycloak_check.stat.exists == False and keycloak_archive_check.stat.exists == False
+
+- name: setup keycloak base directory
+  file: path="{{ keycloak_base_dir }}" state=directory mode=0755 owner="{{ keycloak_owner }}" group="{{ keycloak_group }}"
+  when: keycloak_check.stat.exists == False 
+
+- name: unpack keycloak archive
+  unarchive: src="/tmp/{{ keycloak_archive }}" dest="{{ keycloak_base_dir }}" owner="{{ keycloak_owner }}" group="{{ keycloak_group }}" copy=no
+  when: keycloak_check.stat.exists == False
+
+- name: keycloak installed
+  file: path={{ check_dir }}/keycloak.done state=touch
+

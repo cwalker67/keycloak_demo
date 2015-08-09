@@ -1,0 +1,26 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.bmuschko:gradle-vagrant-plugin:2.0'
+    }
+}
+
+
+subprojects {
+	apply plugin:'java'
+}
+
+apply plugin: 'com.bmuschko.vagrant'
+
+vagrant {
+    boxDir = file("$projectDir/vm-keycloak")
+
+    installation {
+        validate = false
+    }
+}
+
+

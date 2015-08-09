@@ -1,0 +1,2 @@
+- name: import spellbook tables
+  mysql_db: name=Spellbook state=import target=/tmp/spellbook.sql

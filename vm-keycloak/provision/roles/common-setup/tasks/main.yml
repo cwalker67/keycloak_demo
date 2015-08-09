@@ -1,0 +1,9 @@
+- name: install common applications
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - wget
+    - git
+    - curl
+    - mc
+    - ntpdate
+    - multitail

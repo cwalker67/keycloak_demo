@@ -1,0 +1,33 @@
+- name: check if realm has been installed
+  stat: path="{{ check_dir }}/keycloak_realm.done"
+  register: keycloak_realm_check
+
+- name: copy realm file to tmp
+  copy: src=hogwarts.realm dest=/tmp
+  when: keycloak_realm_check.stat.exists == False
+
+- name: make sure keycloak is shutdown
+  service: name=keycloak state=stopped
+  when: keycloak_realm_check.stat.exists == False
+
+- name: import realm
+  shell: "{{ app_base_dir }}/keycloak/bin/standalone.sh -Dkeycloak.import=/tmp/hogwarts.realm > /tmp/keycloak_realm_input.log"
+  become: yes
+  become_user: keycloak
+  async: 60
+  poll: 0
+  when: keycloak_realm_check.stat.exists == False
+
+- name: wait for import to finish
+  wait_for: path="/tmp/keycloak_realm_input.log" search_regex="WFLYSRV0025:"
+  when: keycloak_realm_check.stat.exists == False
+
+- name: shutdown keycloak realm import
+  command: "{{ app_base_dir }}/keycloak/bin/jboss-cli.sh --connect -c shutdown"
+  become: yes
+  become_user: keycloak
+  when: keycloak_realm_check.stat.exists == False
+
+- name: keycloak realm installed
+  file: path={{ check_dir }}/keycloak_realm.done state=touch
+

@@ -1,0 +1,7 @@
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+
+httpPort = 8000
+stopPort = 9451
+stopKey = 'stupefy'

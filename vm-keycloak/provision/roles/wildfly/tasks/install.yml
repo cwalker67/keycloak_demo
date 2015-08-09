@@ -1,0 +1,28 @@
+- name: check if current wildfly version is installed
+  stat: path="{{ check_dir }}/wildfly.done"
+  register: wildfly_check
+
+- name: Add group "{{ wildfly_group }}"
+  group: name={{ wildfly_group }}
+
+- name: Add user "{{ wildfly_owner }}"
+  user: name={{ wildfly_owner }} group={{ wildfly_group }} createhome=no shell=/bin/false comment="Wildfly User" 
+
+- name: check if archive download exists
+  stat: path="/tmp/{{ wildfly_archive }}"
+  register: wildfly_archive_check
+
+- name: download wildfly
+  get_url: url="{{ wildfly_url }}" dest=/tmp
+  when: wildfly_check.stat.exists == False and wildfly_archive_check.stat.exists == False
+
+- name: setup wildfly base directory
+  file: path="{{ wildfly_base_dir }}" state=directory mode=0755 owner="{{ wildfly_owner }}" group="{{ wildfly_group }}"
+  when: wildfly_check.stat.exists == False
+
+- name: unpack wildfly archive
+  unarchive: src="/tmp/{{ wildfly_archive }}" dest="{{ wildfly_base_dir }}" owner="{{ wildfly_owner }}" group="{{ wildfly_group }}" creates="{{ wildfly_install_dir }}" copy=no
+  when: wildfly_check.stat.exists == False
+
+- name: wildfly installed
+  file: path={{ check_dir }}/wildfly.done state=touch

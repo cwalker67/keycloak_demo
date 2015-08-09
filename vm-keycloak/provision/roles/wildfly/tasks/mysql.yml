@@ -1,0 +1,17 @@
+# until ansible 2.0
+#- name: get mysql jdbc driver
+#  maven_artifact: group_id=mysql artifact_id=mysql-connector-java version=5.1.36 dest="{{ wildfly_install_dir }}/standalone/deployments/"
+#  user: "{{ wildfly_owner }}"
+
+- name: download mysql driver
+  get_url: url="http://central.maven.org/maven2/mysql/mysql-connector-java/5.1.36/mysql-connector-java-5.1.36.jar" dest="{{ wildfly_install_dir }}/standalone/deployments/"
+  become: yes
+  become_user: "{{ wildfly_owner }}"
+
+- name: copy mysql cli to tmp
+  copy: src=mysql.cli dest=/tmp owner="{{ owner }}" group="{{ group }}"
+
+- name: install mysql driver into standalone.xml through cli
+  command: "{{ install_dir }}/bin/jboss-cli.sh --file=/tmp/mysql.cli"
+  become: yes
+  become_user: "{{ wildfly_owner }}"

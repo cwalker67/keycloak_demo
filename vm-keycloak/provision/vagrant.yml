@@ -1,0 +1,25 @@
+- hosts: all
+
+  vars_files:
+    - vars/main.yml
+
+  sudo: yes 
+
+  pre_tasks:
+  - name: create install check directory
+    file: path="{{ check_dir }}" state=directory
+
+  roles:
+    - common-setup
+    - geerlingguy.mysql 
+    - bennojoy.openldap_server
+    - smola.java
+    - wildfly
+    - keycloak
+    - keycloak_wf9_adapter
+    - spellbook-db
+    - ldap-data
+    - keycloak-realm
+    
+
+

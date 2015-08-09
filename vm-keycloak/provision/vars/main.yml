@@ -1,0 +1,14 @@
+mysql_root_password: password
+mysql_users:
+  - { name: mysql, host: "%", password: password, priv: "*.*:ALL" }
+
+openldap_server_domain_name: hogwarts.com
+openldap_server_rootpw: password
+openldap_server_enable_ssl: false
+openldap_bind_dn: "cn=Manager,dc=hogwarts,dc=com"
+
+java_packages:
+  - oracle-java8-installer
+
+app_base_dir: /opt/jboss
+check_dir: /etc/ansible/install

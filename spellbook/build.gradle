@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'war'
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies{
+	
+    providedCompile group: 'org.jboss.spec', name: 'jboss-javaee-7.0', version: '1.0.1.Final'
+    providedCompile group: 'org.jboss.resteasy', name: 'jaxrs-api', version: '3.0.8.Final'
+    providedCompile group: 'org.slf4j', name:'slf4j-api',version: '1.7.5'
+    providedCompile group: 'org.slf4j', name:'slf4j-log4j12', version:'1.7.5'
+    providedCompile group: 'org.jboss.ejb3', name: 'jboss-ejb3-ext-api', version: '2.1.0'
+    providedCompile group: 'org.keycloak', name: 'keycloak-adapter-core', version: '1.3.1.Final'
+    providedCompile group: 'org.keycloak', name: 'keycloak-core', version: '1.3.1.Final'
+
+}
+
+// def dependencyList = ['org.keycloak.keycloak-core']
+
+
+war {
+//    manifest {
+//        attributes 'Dependencies': dependencyList.join(' , ')
+//
+//    }
+}

@@ -1,0 +1,26 @@
+- name: check if keycloak wildfly adapter has been installed
+  stat: path="{{ check_dir }}/keycloak_wf_adapter.done"
+  register: keycloak_adapter_check
+
+- name: check if archive download exists
+  stat: path="/tmp/{{ archive }}"
+  register: keycloak_archive_check
+
+- name: download keycloak adapter
+  get_url: url="{{ url }}" dest=/tmp
+  when: keycloak_adapter_check.stat.exists == False and keycloak_archive_check.stat.exists == False
+
+- name: unpack keycloak adapter archive
+  unarchive: src="/tmp/{{ archive }}" dest="{{ install_dir }}" owner="{{ owner }}" group="{{ group }}" copy=no
+  when: keycloak_adapter_check.stat.exists == False
+
+- name: copy install cli to tmp
+  copy: src=installAdapter.cli dest=/tmp owner="{{ owner }}" group="{{ group }}"
+  when: keycloak_adapter_check.stat.exists == False
+
+- name: install through admin server cli
+  command: "sudo -u {{ owner }} {{ install_dir }}/bin/jboss-cli.sh --file=/tmp/installAdapter.cli"
+  when: keycloak_adapter_check.stat.exists == False
+
+- name: keycloak wildfly adapter installed
+  file: path={{ check_dir }}/keycloak_wf_adapter.done state=touch

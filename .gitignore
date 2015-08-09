@@ -1,0 +1,40 @@
+### Gradle ###
+build
+.gradle*
+
+### MAC Stuff ###
+.DS_Store
+
+### Eclipse ##
+.project
+.settings
+.classpath
+target
+.sonar
+*.pydevproject
+.metadata
+bin
+tmp
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+*.launch
+
+### IntelliJ ###
+*.iml
+*.ipr
+*.iws
+.idea
+*.ids
+out
+atlassian-ide-plugin.xml
+lib
+### derby unit test
+*.log
+
+### Vagrant ###
+.vagrant
+vm-keycloak/shared

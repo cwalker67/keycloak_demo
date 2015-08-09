@@ -1,0 +1,16 @@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="spell in spells | orderBy: 'spellType.spellTypeId'" ng-class="affinityClass(spell)">
+            <td>{{spell.name}}</td>
+            <td>{{spell.description}}</td>
+            <td>{{spell.spellType.spellTypeId}}</td>
+        </tr>
+    </tbody>
+</table>

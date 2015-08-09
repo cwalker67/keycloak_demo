@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hogwarts AngularJS App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    </head>
+    <body>
+        <div class="container">
+
+            <div class="row">
+                <nav class="navbar navbar-default" role="navigation">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+
+                        <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#/">Hogwarts</a>
+                    </div>
+            
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'" ng-click="navCollapsed = true">
+              
+                        <ul class="nav navbar-nav">
+                            <li><a href="#/user">User</a></li>
+                            <li><a href="#/spells">Spells</a></li>
+                        </ul>
+                
+                        <form class="navbar-form navbar-right">
+                            <button ng-click="logout()" ng-controller="AppCtrl" class="btn btn-info"><i class="fa fa-user fa-fw"></i> logout</button>
+                        </form>
+                    </div><!-- /.navbar-collapse -->
+                </nav>
+            </div>
+
+            <div class="row">
+                <div ng-view></div>
+            </div>
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-route.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.2/ui-bootstrap-tpls.js"></script>
+        <script src="http://172.16.0.100:8080/auth/js/keycloak.js"></script>
+        <script src="app.js"></script>
+        <script src="user/user.js"></script>
+        <script src="spells/spells.js"></script>
+    </body>
+</html>

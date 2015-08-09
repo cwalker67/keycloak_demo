@@ -1,0 +1,25 @@
+- name: update JBOSS_HOME file
+  lineinfile: dest="{{ wildfly_install_dir }}/bin/init.d/wildfly.conf" 
+              regexp=^JBOSS_HOME
+              line="JBOSS_HOME=\"{{ wildfly_base_dir }}/{{ wildfly_name }}\""
+
+- name: update JBOSS_USER file
+  lineinfile: dest="{{ wildfly_install_dir }}/bin/init.d/wildfly.conf" 
+              regexp=^JBOSS_USER
+              line="JBOSS_USER={{ wildfly_owner }}"
+
+- name: update JBOSS_OPTS file
+  lineinfile: dest="{{ wildfly_install_dir }}/bin/init.d/wildfly.conf" 
+              regexp=^JBOSS_OPTS
+              line="JBOSS_OPTS=\"-Djboss.bind.address=0.0.0.0 -Djboss.bind.address.management=0.0.0.0 -Djboss.socket.binding.port-offset={{ wildfly_port_offset }}\""
+
+- name: create link for wildfly.conf to /etc/default/wildfly
+  file: src="{{ wildfly_install_dir }}/bin/init.d/wildfly.conf" dest=/etc/default/wildfly state=link
+
+- name: create a link for wildfly startup
+  file: src="{{ wildfly_install_dir }}/bin/init.d/wildfly-init-debian.sh" dest=/etc/init.d/wildfly state=link
+
+- name: create a link to wildfly
+  file: src="{{ wildfly_install_dir }}" dest="{{ wildfly_base_dir }}/wildfly" state=link
+
+  

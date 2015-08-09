@@ -1,0 +1,28 @@
+- name: update JBOSS_HOME for keycloak
+  lineinfile: dest="{{ keycloak_install_dir }}/bin/init.d/wildfly.conf" 
+              regexp=^JBOSS_HOME
+              line="JBOSS_HOME=\"{{ keycloak_base_dir }}/{{ keycloak_name }}\""
+
+- name: update JBOSS_USER for keycloak
+  lineinfile: dest="{{ keycloak_install_dir }}/bin/init.d/wildfly.conf" 
+              regexp=^JBOSS_USER
+              line="JBOSS_USER={{ keycloak_owner }}"
+
+- name: update JBOSS_OPTS for keycloak
+  lineinfile: dest="{{ keycloak_install_dir }}/bin/init.d/wildfly.conf" 
+              regexp=^JBOSS_OPTS
+              line="JBOSS_OPTS=\"-Djboss.bind.address=0.0.0.0 -Djboss.bind.address.management=0.0.0.0 -Djboss.socket.binding.port-offset={{ keycloak_port_offset }}\""
+
+- name: update NAME for wildfly-init-debian startup
+  lineinfile: dest="{{ keycloak_install_dir }}/bin/init.d/wildfly-init-debian.sh" 
+              regexp=^NAME=wildfly
+              line="NAME=keycloak"
+
+- name: create link for wildfly.conf to /etc/default/keycloak
+  file: src="{{ keycloak_install_dir }}/bin/init.d/wildfly.conf" dest=/etc/default/keycloak state=link
+
+- name: create a link for keycloak startup
+  file: src="{{ keycloak_install_dir }}/bin/init.d/wildfly-init-debian.sh" dest=/etc/init.d/keycloak state=link
+
+- name: create a link to keycloak
+  file: src="{{ keycloak_install_dir }}" dest="{{ keycloak_base_dir }}/keycloak" state=link

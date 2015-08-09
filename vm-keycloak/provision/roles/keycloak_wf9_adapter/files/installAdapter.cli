@@ -1,0 +1,14 @@
+embed-server
+if (outcome != success) of /extension=org.keycloak.keycloak-adapter-subsystem:read-resource
+    /extension=org.keycloak.keycloak-adapter-subsystem:add()
+end-if
+
+if (outcome != success) of /subsystem=keycloak:read-resource
+    /subsystem=keycloak:add
+end-if
+
+if (outcome != success) of /subsystem=security/security-domain=keycloak:read-resource
+    /subsystem=security/security-domain=keycloak/:add()
+    /subsystem=security/security-domain=keycloak/authentication=classic:add(login-modules=[{"code"=>"org.keycloak.adapters.jboss.KeycloakLoginModule","flag"=>"required"}])
+end-if
+stop-embedded-server

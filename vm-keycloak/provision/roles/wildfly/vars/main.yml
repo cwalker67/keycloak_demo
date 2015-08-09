@@ -1,0 +1,11 @@
+wildfly_group: "jboss"
+wildfly_owner: "wildfly"
+
+wildfly_version: "9.0.1.Final"
+wildfly_name: "wildfly-{{ wildfly_version }}"
+wildfly_archive: "{{ wildfly_name }}.zip"
+wildfly_url: "http://download.jboss.org/wildfly/{{ wildfly_version }}/{{ wildfly_archive }}"
+wildfly_base_dir: "{{ app_base_dir }}"
+wildfly_install_dir: "{{ wildfly_base_dir }}/{{ wildfly_name }}"
+
+wildfly_port_offset: 1000
