@@ -1,0 +1,32 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout=5000>{{alert.msg}}</alert>
+<form novalidate name="detailForm">
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" ng-model="spell.name" required>
+    </div>
+
+    <div class="form-group">
+        <label>Description</label>
+        <textarea name="description" class="form-control" ng-model="spell.description" required></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Affinity</label>
+        <select class="form-control" ng-model="spell.spellAffinity" required>
+            <option>LIGHT</option>
+            <option>NEUTRAL</option>
+            <option>DARK</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Type</label>
+        <select ng-model="spell.spellType" class="form-control" ng-options="spellType.spellTypeId for spellType in spellTypes track by spellType.spellTypeId" required></select>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-info" ng-click="reset()">Reset</button>
+        <button class="btn btn-success" ng-click="save()">Save</button>
+    </div>
+
+</form>

@@ -16,7 +16,7 @@ When complete, I hope to show:
 
 ### Setup
 * build war files `gradle clean build`
- * creates `howarts/build/libs/hogwarts.war`
+ * creates `hogwarts/build/libs/hogwarts.war`
  * creates `spellbook/build/libs/spellbook.war`
 * startup vagrant vm
  * follow vm-keycloak README.md to setup vm

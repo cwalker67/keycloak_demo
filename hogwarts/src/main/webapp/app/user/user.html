@@ -1,1 +1,66 @@
-<p>Welcome {{ keycloak.idTokenParsed.given_name }}.</p>
+<div class="row">
+    <div class="col-md-8">
+        <span ng-click="showDebug = !showDebug" ng-init="showDebug=false" class="fa-stack">
+            <i class="fa fa-play fa-rotate-270 fa-stack-2x"></i>
+            <i class="fa fa-eye fa-stack-1x fa-inverse"></i>
+        </span>
+        <b class="h4">House of {{keycloak.idTokenParsed.organization}} welcomes</b>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-3">
+                <strong>First Name</strong>
+            </div>
+            <div class="col-md-9">
+                {{keycloak.idTokenParsed.given_name}}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-3">
+                <strong>Last Name</strong>
+            </div>
+            <div class="col-md-9">
+                {{keycloak.idTokenParsed.family_name}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-3">
+                <strong>Email</strong>
+            </div>
+            <div class="col-md-9">
+                {{keycloak.idTokenParsed.email}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-3">
+                <strong>Groups</strong>
+            </div>
+            <div class="col-md-9">
+                <ul>
+                    <li ng-repeat="group in keycloak.tokenParsed.realm_access.roles">{{group}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-show="showDebug" class="row">
+    <pre>{{keycloak | json}}</pre>
+</div>

@@ -4,13 +4,15 @@
             <th>Name</th>
             <th>Description</th>
             <th>Type</th>
+            <th ng-show="isCreator()"><a href="#/new"><i class="fa fa-plus-circle"></i></a></th>
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="spell in spells | orderBy: 'spellType.spellTypeId'" ng-class="affinityClass(spell)">
+        <tr ng-repeat="spell in spells track by spell.spellId | orderBy: 'spellType.spellAffinity'" ng-class="affinityClass(spell)">
             <td>{{spell.name}}</td>
             <td>{{spell.description}}</td>
             <td>{{spell.spellType.spellTypeId}}</td>
+            <td ng-show="isCreator()"><a href="#/edit/{{spell.spellId}}"><i class="fa fa-pencil"></i></a></td>
         </tr>
     </tbody>
 </table>

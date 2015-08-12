@@ -69,7 +69,7 @@ givenname: Albus
 cn: Albus Dumbledore
 sn: Dumbledore
 mail: adumbledore@example.com
-ou: Gryffindor
+o: Gryffindor
 ou: People
 
 dn: uid=hpotter,ou=People,dc=hogwarts,dc=com
@@ -83,7 +83,7 @@ givenname: Harry
 cn: Harry Potter
 sn: Potter
 mail: hpotter@example.com
-ou: Gryffindor
+o: Gryffindor
 ou: People
 
 dn: uid=hgranger,ou=People,dc=hogwarts,dc=com
@@ -97,7 +97,7 @@ givenname: Hermoine
 cn: Hermoine Granger
 sn: Granger
 mail: hgranger@example.com
-ou: Gryffindor
+o: Gryffindor
 ou: People
 
 dn: uid=rweasley,ou=People,dc=hogwarts,dc=com
@@ -111,7 +111,7 @@ givenname: Ron
 cn: Ron Weasley
 sn: Weasley
 mail: rweasley@example.com
-ou: Gryffindor
+o: Gryffindor
 ou: People
 
 dn: uid=sblack,ou=People,dc=hogwarts,dc=com
@@ -125,7 +125,7 @@ givenname: Sirius
 cn: Sirius Black
 sn: Black
 mail: sblack@example.com
-ou: Gryffindor
+o: Gryffindor
 ou: People
 
 dn: uid=nlongbottom,ou=People,dc=hogwarts,dc=com
@@ -139,7 +139,7 @@ givenname: Neville
 cn: Neville Longbottom
 sn: Longbottom
 mail: nlongbottom@example.com
-ou: Gryffindor
+o: Gryffindor
 ou: People
 
 dn: uid=ntonks,ou=People,dc=hogwarts,dc=com
@@ -153,7 +153,7 @@ givenname: Nymphadora
 cn: Nymphadora Tonks
 sn: Tonks
 mail: ntonks@example.com
-ou: Hufflepuff
+o: Hufflepuff
 ou: People
 
 dn: uid=cdiggory,ou=People,dc=hogwarts,dc=com
@@ -167,7 +167,7 @@ givenname: Cedric
 cn: Cedric Diggory
 sn: Diggory
 mail: cdiggory@example.com
-ou: Hufflepuff
+o: Hufflepuff
 ou: People
 
 dn: uid=habbott,ou=People,dc=hogwarts,dc=com
@@ -181,7 +181,7 @@ givenname: Hannah
 cn: Hannah Abbott
 sn: Abbott
 mail: habbott@example.com
-ou: Hufflepuff
+o: Hufflepuff
 ou: People
 
 dn: uid=sbones,ou=People,dc=hogwarts,dc=com
@@ -195,7 +195,7 @@ givenname: Susan
 cn: Susan Bones
 sn: Bones
 mail: sbones@example.com
-ou: Hufflepuff
+o: Hufflepuff
 ou: People
 
 dn: uid=emacmillan,ou=People,dc=hogwarts,dc=com
@@ -209,7 +209,7 @@ givenname: Ernie
 cn: Ernie Macmillan
 sn: Macmillan
 mail: emacmillan@example.com
-ou: Hufflepuff
+o: Hufflepuff
 ou: People
 
 dn: uid=llovegood,ou=People,dc=hogwarts,dc=com
@@ -223,7 +223,7 @@ givenname: Luna
 cn: Luna Lovegood
 sn: Lovegood
 mail: llovegood@example.com
-ou: Ravenclaw
+o: Ravenclaw
 ou: People
 
 dn: uid=cchang,ou=People,dc=hogwarts,dc=com
@@ -237,7 +237,7 @@ givenname: Cho
 cn: Cho Chang
 sn: Chang
 mail: cchang@example.com
-ou: Ravenclaw
+o: Ravenclaw
 ou: People
 
 dn: uid=ppatil,ou=People,dc=hogwarts,dc=com
@@ -251,7 +251,7 @@ givenname: Padma
 cn: Padma Patil
 sn: Patil
 mail: ppatil@example.com
-ou: Ravenclaw
+o: Ravenclaw
 ou: People
 
 dn: uid=mwarren,ou=People,dc=hogwarts,dc=com
@@ -265,7 +265,7 @@ givenname: Myrtle
 cn: Myrtle Warren
 sn: Warren
 mail: mwarren@example.com
-ou: Ravenclaw
+o: Ravenclaw
 ou: People
 
 dn: uid=pclearwater,ou=People,dc=hogwarts,dc=com
@@ -279,7 +279,7 @@ givenname: Penny
 cn: Penny Clearwater
 sn: Clearwater
 mail: pclearwater@example.com
-ou: Ravenclaw
+o: Ravenclaw
 ou: People
 
 dn: uid=triddle,ou=People,dc=hogwarts,dc=com
@@ -293,7 +293,7 @@ givenname: Tom
 cn: Tom Riddle
 sn: Riddle
 mail: triddle@example.com
-ou: Slytherin
+o: Slytherin
 ou: People
 
 dn: uid=ssnape,ou=People,dc=hogwarts,dc=com
@@ -307,7 +307,7 @@ givenname: Severus
 cn: Severus Snape
 sn: Snape
 mail: ssnape@example.com
-ou: Slytherin
+o: Slytherin
 ou: People
 
 dn: uid=dmalfoy,ou=People,dc=hogwarts,dc=com
@@ -321,7 +321,7 @@ givenname: Draco
 cn: Draco Malfoy
 sn: Malfoy
 mail: dmalfoy@example.com
-ou: Slytherin
+o: Slytherin
 ou: People
 
 dn: uid=blestrange,ou=People,dc=hogwarts,dc=com
@@ -335,7 +335,7 @@ givenname: Bellatrix
 cn: Bellatrix Lestrange
 sn: Lestrange
 mail: blestrange@example.com
-ou: Slytherin
+o: Slytherin
 ou: People
 
 dn: uid=pparkinson,ou=People,dc=hogwarts,dc=com
@@ -349,6 +349,6 @@ givenname: Pansy
 cn: Pansy Parkinson
 sn: Parkinson
 mail: pparkinson@example.com
-ou: Slytherin
+o: Slytherin
 ou: People
 

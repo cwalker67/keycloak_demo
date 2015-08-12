@@ -5,7 +5,9 @@ var module = angular.module('myApp', [
   'ngRoute',
   'ui.bootstrap',
   'myApp.user',
-  'myApp.spells'
+  'myApp.spells',
+  'myApp.detail',
+  'myApp.spellService'
 ]);
 
 module.controller('AppCtrl', ['Auth', '$scope', function(Auth, $scope) {
@@ -13,6 +15,7 @@ module.controller('AppCtrl', ['Auth', '$scope', function(Auth, $scope) {
 }]);
 
 module.config(['$httpProvider', '$routeProvider', function($httpProvider, $routeProvider) {
+    $httpProvider.interceptors.push('errorInterceptor');
     $httpProvider.interceptors.push('authInterceptor');
     $routeProvider
       .when('/', {
@@ -43,14 +46,36 @@ module.factory('authInterceptor', ['$q', 'Auth', function($q, Auth) {
 
                     deferred.resolve(config);
                 }).error(function() {
-                        deferred.reject('Failed to refresh token');
-                    });
+                    location.reload();
+                });
             }
             return deferred.promise;
         }
     };
 }]);
 
+
+module.factory('errorInterceptor', ['$q', function($q) {  
+    return {
+        responseError: function(response) {
+            if (response.status == 401) {
+                console.log('session timeout?');
+                logout();
+            } else if (response.status == 403) {
+                alert("Forbidden");
+            } else if (response.status == 404) {
+                alert("Not found");
+            } else if (response.status) {
+                if (response.data && response.data.errorMessage) {
+                    alert(response.data.errorMessage);
+                } else {
+                    alert("An unexpected server error has occurred");
+                }
+            }
+            return $q.reject(response);
+        }
+    };
+}]);
 
 
 angular.element(document).ready(function () {

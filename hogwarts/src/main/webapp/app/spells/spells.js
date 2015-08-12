@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('myApp.spells', ['ngRoute'])
+angular.module('myApp.spells', ['ngRoute', 'myApp.spellService'])
 
-.controller('SpellCtrl', ['SpellData', '$scope', function(SpellData, $scope) {
+.controller('SpellCtrl', ['SpellData', 'Auth', '$scope', function(SpellData, Auth, $scope) {
 
     function getSpells() {
       SpellData.all()
@@ -22,7 +22,12 @@ angular.module('myApp.spells', ['ngRoute'])
         } else {
             return 'info';
         }
-    }
+    };
+
+    $scope.isCreator = function() {
+        return Auth.hasRealmRole('Spell Creators');
+    };
+
 }])
 
 .config(['$routeProvider', function($routeProvider) {
@@ -32,19 +37,5 @@ angular.module('myApp.spells', ['ngRoute'])
   });
 }])
 
-.constant('ENDPOINT_URI', 'http://172.16.0.100:9080/spellbook/')
 
 
-.service('SpellData', [ '$http', 'ENDPOINT_URI', function($http, ENDPOINT_URI) {
-    var service = this;
-
-    var path = 'spell';
-
-    function getUrl() {
-        return ENDPOINT_URI + path;
-    };
-
-    service.all = function() {
-        return $http.get(getUrl());
-    };
-}]);

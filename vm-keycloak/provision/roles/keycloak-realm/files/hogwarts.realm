@@ -16,16 +16,101 @@
             "clientId": "spellbook-service",
             "enabled": true,
             "bearerOnly" : true,
-            "adminUrl": "/basicauth",
             "secret": "password"
         },
         {
-            "clientId": "hogwarts-web",
-            "enabled": true,
-            "publicClient" : true,
+            "clientId" : "hogwarts-web",
+            "enabled" : true,
+            "secret" : "password",
             "redirectUris" : [ "http://172.16.0.100:9080/hogwarts/*" ],
             "webOrigins" : [ "http://172.16.0.100:9080" ],
-            "secret": "password"
+            "publicClient" : true,
+            "protocolMappers" : [ {
+              "name" : "role list",
+              "protocol" : "saml",
+              "protocolMapper" : "saml-role-list-mapper",
+              "consentRequired" : false,
+              "config" : {
+                "single" : "false",
+                "attribute.nameformat" : "Basic",
+                "attribute.name" : "Role"
+              }
+            }, {
+              "name" : "full name",
+              "protocol" : "openid-connect",
+              "protocolMapper" : "oidc-full-name-mapper",
+              "consentRequired" : true,
+              "consentText" : "${fullName}",
+              "config" : {
+                "id.token.claim" : "true",
+                "access.token.claim" : "true"
+              }
+            }, {
+              "name" : "username",
+              "protocol" : "openid-connect",
+              "protocolMapper" : "oidc-usermodel-property-mapper",
+              "consentRequired" : true,
+              "consentText" : "${username}",
+              "config" : {
+                "user.attribute" : "username",
+                "id.token.claim" : "true",
+                "access.token.claim" : "true",
+                "claim.name" : "preferred_username",
+                "Claim JSON Type" : "String"
+              }
+            }, {
+              "name" : "given name",
+              "protocol" : "openid-connect",
+              "protocolMapper" : "oidc-usermodel-property-mapper",
+              "consentRequired" : true,
+              "consentText" : "${givenName}",
+              "config" : {
+                "user.attribute" : "firstName",
+                "id.token.claim" : "true",
+                "access.token.claim" : "true",
+                "claim.name" : "given_name",
+                "Claim JSON Type" : "String"
+              }
+            }, {
+              "name" : "organization",
+              "protocol" : "openid-connect",
+              "protocolMapper" : "oidc-usermodel-attribute-mapper",
+              "consentRequired" : false,
+              "config" : {
+                "Claim JSON Type" : "String",
+                "multivalued" : "false",
+                "user.attribute" : "organization",
+                "id.token.claim" : "true",
+                "access.token.claim" : "true",
+                "claim.name" : "organization"
+              }
+            }, {
+              "name" : "family name",
+              "protocol" : "openid-connect",
+              "protocolMapper" : "oidc-usermodel-property-mapper",
+              "consentRequired" : true,
+              "consentText" : "${familyName}",
+              "config" : {
+                "user.attribute" : "lastName",
+                "id.token.claim" : "true",
+                "access.token.claim" : "true",
+                "claim.name" : "family_name",
+                "Claim JSON Type" : "String"
+              }
+            }, {
+              "name" : "email",
+              "protocol" : "openid-connect",
+              "protocolMapper" : "oidc-usermodel-property-mapper",
+              "consentRequired" : true,
+              "consentText" : "${email}",
+              "config" : {
+                "user.attribute" : "email",
+                "id.token.claim" : "true",
+                "access.token.claim" : "true",
+                "claim.name" : "email",
+                "Claim JSON Type" : "String"
+              }
+            } ]
         }
     ],
     "userFederationProviders" : [ 
@@ -78,13 +163,13 @@
               "ldap.attribute" : "createTimestamp"
             }
         }, {
-            "name" : "organizations",
+            "name" : "organization",
             "federationProviderDisplayName" : "hogwarts-openldap",
             "federationMapperType" : "user-attribute-ldap-mapper",
             "config" : {
-              "user.model.attribute" : "organizations",
+              "user.model.attribute" : "organization",
               "read.only" : "true",
-              "ldap.attribute" : "ou"
+              "ldap.attribute" : "o"
             }
         }, {
             "name" : "username",
