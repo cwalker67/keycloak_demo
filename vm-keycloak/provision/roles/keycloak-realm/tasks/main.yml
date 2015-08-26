@@ -3,7 +3,7 @@
   register: keycloak_realm_check
 
 - name: copy realm file to tmp
-  copy: src=hogwarts.realm dest=/tmp
+  template: src=hogwarts.j2 dest=/tmp/hogwarts.realm 
   when: keycloak_realm_check.stat.exists == False
 
 - name: make sure keycloak is shutdown

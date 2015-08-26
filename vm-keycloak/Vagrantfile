@@ -21,6 +21,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vbguest.auto_update = false
     
     config.vm.provision "ansible" do |ansible|
+        ansible.extra_vars = {
+            host_ip_address: `ifconfig en0| grep "inet " | awk '{printf "%s", $2}'`
+        }
         ansible.playbook = "provision/vagrant.yml"
     end
   

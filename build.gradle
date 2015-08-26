@@ -24,3 +24,21 @@ vagrant {
 }
 
 
+// Get the path for the locally installed binaries
+task npmBin {
+    new ByteArrayOutputStream().withStream { os ->
+        def result = exec {
+            workingDir = 'hogwarts'
+            executable = 'npm'
+            args = ['bin']
+            standardOutput = os
+        }
+        ext.binPath = os.toString().trim() + "/"
+    }
+}
+
+task serve(type:Exec, dependsOn: npmBin) {
+    workingDir "$projectDir/hogwarts"
+    commandLine "${npmBin.binPath}gulp", 'serve'
+}
+

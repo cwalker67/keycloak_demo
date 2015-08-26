@@ -1,0 +1,36 @@
+{
+  "name": "hogwarts",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular-animate": "~1.4.0",
+    "angular-sanitize": "~1.4.0",
+    "angular-route": "~1.4.0",
+    "bootstrap": "~3.3.4",
+    "angular-bootstrap": "~0.13.0",
+    "malarkey": "yuanqing/malarkey#~1.3.0",
+    "animate.css": "~3.3.0",
+    "angular": "~1.4.0",
+    "fontawesome": "~4.4.0",
+    "angular-toastr": "~1.4.1",
+    "keycloak": "1.4.0.Final"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.0"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css"
+      ]
+    },
+    "fontawesome": {
+      "main": [
+        "css/font-awesome.min.css",
+        "fonts/*"
+      ]
+    }    
+  },
+  "resolutions": {
+    "angular": "~1.4.0"
+  }
+}
