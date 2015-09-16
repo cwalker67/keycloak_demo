@@ -4,7 +4,7 @@
   angular
     .module('hogwarts.spellService', [])
 
-    .constant('ENDPOINT_URI', 'http://172.16.0.100:9080/spellbook/')
+    .constant('ENDPOINT_URI', 'https://172.16.0.100/spellbook/')
 
     .service('SpellData', [ '$http', 'ENDPOINT_URI', SpellData]);
 

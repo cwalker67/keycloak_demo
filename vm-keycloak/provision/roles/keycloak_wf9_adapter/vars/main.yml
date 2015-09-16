@@ -1,7 +1,7 @@
 group: "jboss"
 owner: "wildfly"
 
-version: "1.4.0.Final"
+version: "1.5.0.Final"
 name: "keycloak-wf9-adapter-dist-{{ version }}"
 archive: "{{ name }}.zip"
 url: "http://downloads.jboss.org/keycloak/{{ version }}/adapters/{{ archive }}"

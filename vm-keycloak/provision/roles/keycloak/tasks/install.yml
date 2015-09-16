@@ -24,6 +24,3 @@
   unarchive: src="/tmp/{{ keycloak_archive }}" dest="{{ keycloak_base_dir }}" owner="{{ keycloak_owner }}" group="{{ keycloak_group }}" copy=no
   when: keycloak_check.stat.exists == False
 
-- name: keycloak installed
-  file: path={{ check_dir }}/keycloak.done state=touch
-

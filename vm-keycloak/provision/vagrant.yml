@@ -20,6 +20,8 @@
     - spellbook-db
     - ldap-data
     - keycloak-realm
+    - jdauphant.ssl-certs
+    - jdauphant.nginx
     
 
 

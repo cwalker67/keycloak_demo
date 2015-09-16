@@ -1,0 +1,12 @@
+embed-server
+    /subsystem=undertow/server=default-server/http-listener=default:write-attribute(name=proxy-address-forwarding,value=true)
+    /subsystem=undertow/server=default-server/http-listener=default:write-attribute(name=redirect-socket,value=proxy-https)
+
+    if (outcome == success) of /socket-binding-group=standard-sockets/socket-binding=proxy-https:read-resource
+        /socket-binding-group=standard-sockets/socket-binding=proxy-https:remove()
+    end-if
+stop-embedded-server
+
+embed-server
+    /socket-binding-group=standard-sockets/socket-binding=proxy-https:add(port=443)
+stop-embedded-server

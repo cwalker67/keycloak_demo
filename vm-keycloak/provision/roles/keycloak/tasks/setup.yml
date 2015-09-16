@@ -26,3 +26,12 @@
 
 - name: create a link to keycloak
   file: src="{{ keycloak_install_dir }}" dest="{{ keycloak_base_dir }}/keycloak" state=link
+
+- name: copy install keycloak ssl cli to tmp
+  copy: src=installKeycloakSSL.cli dest=/tmp owner="{{ keycloak_owner }}" group="{{ keycloak_group }}"
+
+- name: install keycloak ssl through admin server cli
+  command: "sudo -u {{ keycloak_owner }} {{ keycloak_install_dir }}/bin/jboss-cli.sh --file=/tmp/installKeycloakSSL.cli"
+
+- name: keycloak installed
+  file: path={{ check_dir }}/keycloak.done state=touch
