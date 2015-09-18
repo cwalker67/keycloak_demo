@@ -40,7 +40,10 @@ function browserSyncInit(baseDir, browser) {
     server: server,
     browser: browser,
     open: "external",
-    port: 52810
+    port: 52810,
+    ui: {
+        port: 52811
+    }
   });
 }
 

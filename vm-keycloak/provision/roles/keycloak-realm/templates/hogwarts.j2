@@ -22,8 +22,8 @@
             "clientId" : "hogwarts-web",
             "enabled" : true,
             "secret" : "password",
-            "redirectUris" : [ "http://172.16.0.100:9080/hogwarts/*", "http://{{ host_ip_address  }}:52810/*" ],
-            "webOrigins" : [ "http://172.16.0.100:9080", "http://{{ host_ip_address }}:52810" ],
+            "redirectUris" : [ "http://{{ host_ip_address  }}:52810/*" ],
+            "webOrigins" : [ "http://{{ host_ip_address }}:52810" ],
             "publicClient" : true,
             "protocolMappers" : [ {
               "name" : "role list",
@@ -113,7 +113,7 @@
             } ]
         }
     ],
-    "userFederationProviders" : [ 
+    "userFederationProviders" : [
         {
             "displayName" : "hogwarts-openldap",
             "providerName" : "ldap",
@@ -138,9 +138,9 @@
               "authType" : "simple",
               "searchScope" : "2"
             }
-        } 
+        }
     ],
-    "userFederationMappers" : [ 
+    "userFederationMappers" : [
         {
             "name" : "role",
             "federationProviderDisplayName" : "hogwarts-openldap",
@@ -224,6 +224,6 @@
               "read.only" : "false",
               "ldap.attribute" : "sn"
             }
-        } 
+        }
     ]
 }

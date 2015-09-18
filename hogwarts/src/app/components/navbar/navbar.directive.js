@@ -20,6 +20,7 @@
     /** @ngInject */
     function NavbarController(Auth, $scope) {
       $scope.logout = Auth.logout;
+      $scope.isLoggedIn = Auth.authenticated;
     }
   }
 

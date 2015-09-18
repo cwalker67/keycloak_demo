@@ -1,44 +1,4 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-
-    dependencies {
-        classpath 'com.bmuschko:gradle-vagrant-plugin:2.0'
-    }
-}
-
 
 subprojects {
 	apply plugin:'java'
 }
-
-apply plugin: 'com.bmuschko.vagrant'
-
-vagrant {
-    boxDir = file("$projectDir/vm-keycloak")
-
-    installation {
-        validate = false
-    }
-}
-
-
-// Get the path for the locally installed binaries
-task npmBin {
-    new ByteArrayOutputStream().withStream { os ->
-        def result = exec {
-            workingDir = 'hogwarts'
-            executable = 'npm'
-            args = ['bin']
-            standardOutput = os
-        }
-        ext.binPath = os.toString().trim() + "/"
-    }
-}
-
-task serve(type:Exec, dependsOn: npmBin) {
-    workingDir "$projectDir/hogwarts"
-    commandLine "${npmBin.binPath}gulp", 'serve'
-}
-

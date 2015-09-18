@@ -7,7 +7,7 @@ repositories {
 
 
 dependencies{
-	
+
     providedCompile group: 'org.jboss.spec', name: 'jboss-javaee-7.0', version: '1.0.1.Final'
     providedCompile group: 'org.jboss.resteasy', name: 'jaxrs-api', version: '3.0.8.Final'
     providedCompile group: 'org.slf4j', name:'slf4j-api',version: '1.7.5'
