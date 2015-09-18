@@ -13,28 +13,33 @@ When complete, I hope to show:
     * secure url - web.xml
     * secure ejb layer
     * access to keycloak access token and resources
+* Added nginx ssl reverse proxy
+    * keycloak is accessed as https://172.16.0.100/auth
+    * spell services are accessed as https://172.16.0.100/spellbook
 
 ### Setup
-* build war files `gradle clean build`
-    * ~~creates hogwarts/build/libs/hogwarts.war~~
-    * creates `spellbook/build/libs/spellbook.war`
-* serve hogwarts application `gradle serve`
-    * will launch app in browser
-    * uses gulp/browser-sync
 * startup vagrant vm
     * follow vm-keycloak README.md to setup vm
     * start vm
+* build war files `gradle clean build`
+    * creates `spellbook/build/libs/spellbook.war`
 * copy war files to vm for deployment
-    * ~~cp hogwarts/build/libs/hogwarts.war vm-keycloak/shared~~
     * `cp spellbook/build/libs/spellbook.war vm-keycloak/shared`
     * `cd vm-keycloak; vagrant ssh`
     * `sudo -u wildfly cp /shared/*.war /opt/jboss/wildfly/standalone/deployments`
     * `sudo service keycloak start`
     * `sudo service wildfly start`
+* start hogwarts application
+    * `cd hogwarts`
+    * `npm install`
+    * `bower install`
+    * `gulp serve`
+    * will launch app in browser
+    * uses gulp/browser-sync
 
 ### Running
 * login to [keycloak] with default admin/admin credentials
  * NOTE: you will need to set another admin password
 
 ---
-[keycloak]:http://172.16.0.100:8080/auth
+[keycloak]:https://172.16.0.100/auth
