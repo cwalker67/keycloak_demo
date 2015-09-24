@@ -9,7 +9,9 @@
  * bennojoy.openldap_server - `ansible=galaxy install bennojoy.openldap_server`
  * geerlingguy.mysql - `ansible-galaxy install geerlingguy.mysql`
  * smola.java - `ansible-galaxy install smola.java`
- * geerlingguy.repo-epel- `ansible-galaxy install geerlingguy.repo-epel`
+ * jdauphant.ssl-certs - `ansible-galaxy install jdauphant.ssl-certs`
+ * jdauphant.nginx - `ansible-galaxy install jdauphant.nginx`
+
 
 ### Running
 * `vagrant up`
