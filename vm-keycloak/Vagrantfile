@@ -12,13 +12,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.ssh.forward_agent = true
     
+    if Vagrant.has_plugin?("vagrant-vbguest")
+        config.vbguest.auto_update = false        
+    end
+
     config.vm.provider :virtualbox do |vb|
         # Use VBoxManage to customize the VM. For example to change memory:
         vb.customize ["modifyvm", :id, "--cpus", "2"]
         vb.customize ["modifyvm", :id, "--memory", "4096"]
     end
 
-    config.vbguest.auto_update = false
     
     config.vm.provision "ansible" do |ansible|
         ansible.extra_vars = {

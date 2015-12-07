@@ -1,8 +1,8 @@
 group: "jboss"
 owner: "wildfly"
 
-version: "1.5.0.Final"
-name: "keycloak-wf9-adapter-dist-{{ version }}"
+version: "1.7.0.CR1"
+name: "keycloak-wildfly-adapter-dist-{{ version }}"
 archive: "{{ name }}.zip"
-url: "http://downloads.jboss.org/keycloak/{{ version }}/adapters/{{ archive }}"
+url: "http://downloads.jboss.org/keycloak/{{ version }}/adapters/keycloak-oidc/{{ archive }}"
 install_dir: "{{ app_base_dir }}/wildfly"
